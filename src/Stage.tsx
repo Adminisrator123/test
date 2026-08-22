@@ -7,6 +7,15 @@ type TextingMessageState = {
 export default class TextingModeStage implements StageBase<TextingMessageState, {}, {}> {
     private config: any;
     private messageState: TextingMessageState;
+    public generator = {
+    	makeImage: async () => {}, // Placeholder, you can leave it empty
+    	imageToImage: async () => {},
+    	removeBackground: async () => {},
+    	inpaintImage: async () => {},
+    };
+    public messenger = {
+    // If your project doesn't use messenger, you can leave it as an empty object
+    };
 
     constructor(data: InitialData<TextingMessageState, {}, {}>) {
         // If you used Option 1 (Interface), keep it as is. 
@@ -22,7 +31,7 @@ export default class TextingModeStage implements StageBase<TextingMessageState, 
             // Remove the tag so the LLM doesn't read "<texting>" as part of the sentence
             prompt.userMessage = prompt.userMessage.replace('<texting>', '').trim();
 
-            const vibes = {
+            const vibes: Record<string, string> = {
                 Casual: "Use lowercase mostly, short sentences, and natural pauses.",
                 Formal: "Use complete sentences, proper punctuation, and a slightly more structured flow.",
                 Hyper: "Use lots of exclamation points, emojis, and very short bursts (1-3 words each)."
@@ -40,10 +49,10 @@ export default class TextingModeStage implements StageBase<TextingMessageState, 
         // Check if we are in texting mode (if the system prompt contains our instruction)
         if (response.system && response.system.includes('[Style Instruction]')) {
             // Split by newline and remove empty lines
-            const messages = response.text.split('\n').filter(line => line.trim() !== '');
+            const messages = response.text.split('\n').filter((line: string) => line.trim() !== '');
 
             // Wrap each message in backticks: `message`
-            response.systemMessages = messages.map(m => `\`${m.trim()}\``);
+            response.systemMessages = messages.map((m: string) => `\`${m.trim()}\``);
         }
 
         this.messageState.messageCount += (response.systemMessages?.length || 0);
