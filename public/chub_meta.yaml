@@ -24,3 +24,4 @@ config_schema:
       type: boolean
       default: true
 github_path: Adminisrator123/test
+extension_id: texting-mode-stage
