@@ -1,21 +1,26 @@
+---
 name: Texting Mode
-description: Converts long LLM responses into a series of short, snappy text messages (like a phone conversation).
-tags: [texting, style, flow]
-
+description: Converts long LLM responses into a series of short, snappy text
+  messages (like a phone conversation).
+tags:
+  - texting
+  - style
+  - flow
 config_schema:
   type: object
   title: Texting Configuration
   properties:
     vibe:
-      title: "Texting Vibe"
-      description: "How the character types."
+      title: Texting Vibe
+      description: How the character types.
       type: string
-      enum: ['Casual', 'Formal', 'Hyper']
-      default: 'Casual'
+      enum:
+        - Casual
+        - Formal
+        - Hyper
+      default: Casual
     useEmojis:
-      title: "Use Emojis?"
+      title: Use Emojis?
       type: boolean
       default: true
-
-github_path: 'https://github.com/Adminisrator123/test'
-
+github_path: https://github.com/Adminisrator123/test
