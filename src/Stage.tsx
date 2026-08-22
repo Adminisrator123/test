@@ -1,4 +1,4 @@
-import { StageBase, InitialData } from './types'; // Adjust based on your actual types file
+import { StageBase, InitialData } from './App'; // Adjust based on your actual types file
 
 type TextingMessageState = {
     messageCount: number;
