@@ -23,4 +23,4 @@ config_schema:
       title: Use Emojis?
       type: boolean
       default: true
-github_path: https://github.com/Adminisrator123/test
+github_path: Adminisrator123/test
